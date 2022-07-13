@@ -1,0 +1,33 @@
+<section>
+    <h4>Повідомлення:</h4>
+        <% @messages.each do |message| %>
+            
+            <%if user_signed_in? and message.chat_id == @chat.id%>
+                <%if message.writer == current_user.id %>
+                <div style= "text-align: left;">
+                            <%@user = User.find(message.writer)%>
+                            <%= @user.name%>
+                            <%= message.created_at%><br>
+                    <article> 
+                            <%= message.text%>
+                    </article> 
+                </div><br>
+            <%end%>
+
+            <%if message.recipient == current_user.id  %>
+                    <div style= "text-align: right;">
+                            <%@user = User.find(message.writer)%>
+                            <%= @user.name%>
+                            <%= message.created_at%><br>
+                    <article> 
+                            <%= message.text%>
+                    </article> 
+                </div><br>
+            <%end%>
+
+
+
+            <%end%>
+
+        <%end%>
+</section>

@@ -1,0 +1,8 @@
+
+<article> 
+<% @messages.each do |message| %>
+    <%=link_to User.find(message.writer).name , message_path(message.id)%>
+    <%=message.text%>
+
+<%end%>
+</article> 

@@ -1,0 +1,34 @@
+<section>
+<h1>Товари</h1>
+
+<%= render 'flash'%>
+
+
+        <% @chats.each do |chat| %>
+            <%if user_signed_in? and Message.find_by(chat_id: chat.id).present?%>
+                <%if User.find(Message.find_by(chat_id: chat.id).recipient).id == current_user.id or User.find(Message.find_by(chat_id: chat.id).writer).id == current_user.id%>
+                    <article>
+                        <%@product = Product.find(chat.product_id) %>
+                        <%@service = Service.find(@product.service_id) %>
+                        <%@game = Game.find(@service.game_id) %>
+
+                        <%= @game.name%> -
+                        <%= @service.name%> -
+                        <%= @product.short_description%> -
+                        <%=Message.find_by(chat_id: chat.id).present?%>
+                        Ціна:
+                        <%= @product.price%><br>
+
+                            <%if User.find(Message.find_by(chat_id: chat.id).recipient).id == current_user.id %>
+                                <%= link_to User.find(Message.find_by(chat_id: chat.id).writer).name, "/products/#{@product.id}/messages/new" %>
+                            <%end%>
+                            <%if User.find(Message.find_by(chat_id: chat.id).writer).id == current_user.id %>
+                                <%= link_to User.find(Message.find_by(chat_id: chat.id).recipient).name, "/products/#{@product.id}/messages/new" %>
+                            <%end%>
+                        
+                    </article>
+                <%end%>
+            <%end%>
+
+        <% end %>
+</section>

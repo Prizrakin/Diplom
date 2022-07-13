@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  salesman: 1
+  buyer: 1
+  text: MyString
+  grade: 1
+
+two:
+  salesman: 1
+  buyer: 1
+  text: MyString
+  grade: 1

@@ -1,0 +1,18 @@
+<h1>Повідомлення</h1>
+
+<%= render 'flash'%>
+
+<article>    
+    <%= render 'message'%>
+</article>
+
+<%= form_with model: [@product, @message] do |f| %>
+    <div>
+        <div>
+            <%= f.text_field :text %>
+        </div>
+    </div>
+
+    <%= f.submit "Додати"%><br>
+
+<% end %>

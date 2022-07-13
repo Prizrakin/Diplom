@@ -1,0 +1,82 @@
+<section>
+<h1><%= @product.short_description %></h1>
+
+<%= render 'flash'%>
+
+</section>
+
+<section>
+        <article>
+            <p>
+                Опис:<br>
+                <%=@product.long_description%>
+            </p>
+        </article>
+
+        <article>
+            <p>
+                Ціна:<br>
+                <%=@product.price%>
+            </p>
+        </article>
+        <article>
+            <p>
+                Продавець:
+                <%=User.find(@product.salesman).name%>
+            </p>
+        </article>
+            <%if user_signed_in?%>
+                <%if @product.active == true%>
+                    <%if current_user.id == @product.salesman%>
+                        <article>
+                            <%=link_to "Редагувати", edit_product_path(@product)%>
+                        </article>
+                    <%else%>
+                        <%if User.find(current_user.id).balance.to_i < @product.price.to_i and not @product.buyer.present?%>
+                            <article>
+                                <%=link_to "Придбати", new_product_transaction_path(@product)%>
+                            </article>
+                            <%else if not @product.buyer.present?%>
+                                    <article>
+                                        <%=link_to "Придбати", "/products/"+@product.id.to_s+"/translation"%>
+                                    </article>
+                            <%else%>
+                                <article>
+                                    <%=link_to "Підтвердити покупку", "/products/"+@product.id.to_s+"/translationp"%>
+                                </article>
+                            <%end%>
+                        <%end%>
+                    <%end%>
+                <%end%>
+
+            <%end%>
+
+               
+
+            <%if user_signed_in?%>
+                <%if @product.salesman != current_user.id%>
+                    <article> 
+                        <h4>Повідомлення:</h4>
+                        <%= link_to "Надіслати повідомлення", new_product_message_path(@product)%><br>
+                    </article>
+                <%end%>
+            <%end%>
+
+
+
+
+
+            
+            
+                
+            
+                        <article>    
+                            <%= render 'review'%>
+                        </article>
+
+
+            
+
+            
+
+</section>

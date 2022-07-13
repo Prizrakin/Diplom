@@ -1,0 +1,28 @@
+<h1>Новий відгук</h1>
+<%= form_with model: [@product, @review] do |f| %>
+<%= render 'flash'%>
+
+    <div>
+        <div>
+            <%= f.label :text, 'Відгук' %>
+        </div>
+
+        <div>
+            <%= f.text_area :text %>
+        </div>
+    </div>
+
+    <div>
+        <div>
+            <%= f.label :grade, 'Оцінка(від 1 до 5)' %>
+        </div>
+
+        <div>
+            <%= f.text_field :grade %>
+        </div>
+    </div>
+
+
+    <%= f.submit "Додати відгук"%>
+    
+<% end %>

@@ -1,0 +1,18 @@
+<h1>Додати гру</h1>
+
+<%= render 'flash'%>
+
+<%= form_with model: @game do |f| %>
+<div>
+        <div>
+            <%= f.label :name, "Назва гри" %>
+        </div>
+
+        <div>
+            <%= f.text_field :name %>
+        </div>
+    </div>
+
+    <%= f.submit "Додати"%><br>
+
+<% end %>

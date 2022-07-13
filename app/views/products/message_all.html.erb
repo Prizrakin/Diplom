@@ -1,0 +1,22 @@
+<section>
+
+<%if @message.present? == true%>
+    <% @message.each do |message| %>
+    
+
+        <article>
+           <%=message.text%>
+
+        </article>
+
+
+
+
+    <%end%>
+<%end%>
+
+
+
+
+   
+</section>

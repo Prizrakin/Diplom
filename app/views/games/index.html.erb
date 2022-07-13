@@ -1,0 +1,25 @@
+<article>
+<h1>Ігри</h1>
+<%= render 'flash'%>
+
+<% if user_administrator?%>
+    <%= link_to "Додати гру", new_game_path %>
+<% end %>
+</article><br>
+
+<article>
+    <% @games.each do |game| %>
+        <article>
+            <h2><%= game.name %></h2>
+            
+            <% game.services.each do |service| %>
+                <article>
+                    <%= link_to service.name, service_path(service) %>
+                </article>
+            <% end %>
+            <% if user_administrator?%>
+                <%= link_to "Додати тип товару", new_game_service_path(game) %>
+            <% end %>
+        </article>
+    <% end %>
+</article>

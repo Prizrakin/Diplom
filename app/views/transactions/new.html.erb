@@ -1,0 +1,48 @@
+<h1>Покупка</h1>
+<%= form_with model: [@product, @transaction] do |f| %>
+<%= render 'flash'%>
+
+    <div>
+        <div>
+            <%= f.label :text, 'Номар картки' %>
+        </div>
+
+        <div>
+            <%= f.text_field :card %>
+        </div>
+    </div>
+
+    <div>
+        <div>
+            <%= f.label :text, 'CVV' %>
+        </div>
+
+        <div>
+            <%= f.text_field :cvv %>
+        </div>
+    </div>
+    
+    <div>
+        <div>
+            <%= f.label :text, 'Дата' %>
+        </div>
+
+        <div>
+            <%= f.text_field :date %>
+        </div>
+    </div>
+
+    <div>
+        <div>
+            <%= f.label :text, 'Ініціали' %>
+        </div>
+
+        <div>
+            <%= f.text_field :owner %>
+        </div>
+    </div>
+
+
+    <%= f.submit "Оплатити"%>
+    
+<% end %>

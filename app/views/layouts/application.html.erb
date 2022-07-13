@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Diplom</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+    <link rel="stylesheet" href="https://cdn.simplecss.org/simple.css">
+    <style type="text/css">
+    body {
+      color: #dddddd;
+      background-color: #212121 
+    }
+    a {
+      
+    }
+  </style>
+
+
+    <nav clas>
+      <a href="/">Головна</a>
+
+      <% if user_signed_in? %>
+
+        <!--<%= link_to "Повідомлення", product_chats_path(Chat.all) %>-->
+        <%= link_to "Покупки", "/products/bought" %>
+        <%= link_to "Продажі", "/products/sold"%>
+
+
+        Баланс:
+        <%=User.find(current_user.id).balance%>
+
+
+
+
+        <%= link_to "Вийти", session_path, data: {
+                      turbo_method: :delete
+                    } %>
+      <% else %>
+        <a href="/sessions/new">Авторизація</a>
+      <% end %>
+    </nav>
+  </head>
+
+  <body>
+
+
+
+
+
+    <main>
+    <%= yield %>
+    <main>
+    <h5>Інтернет-магазину ігрових акаунтів та внутрішньоігрового контенту<h5>
+    <h5>При виявленні проблем, звертатися на пошту:<br> Prizrakin.king@gmail.com</h5>
+  </body>
+</html>

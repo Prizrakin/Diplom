@@ -1,0 +1,60 @@
+<section>
+
+<%if @product.present? == true%>
+    <% @product.each do |product| %>
+    
+
+    <article>
+            <%= link_to product.short_description ,product_path(product)%>
+            Ціна:
+            <%=product.price%>
+            <p>
+            Покупець:
+                
+                <%if product.buyer?%>
+                <%=User.find(product.buyer).name%>
+                <%=User.find(product.buyer).email%>
+                <%end%>
+                
+                
+
+
+                <%amount = 0%>
+                <%grade = 0%>
+                <% %>
+                <% @reviews.each do |review| %>
+                        <%if review.salesman == product.salesman%>
+
+                            <%amount+=1%>
+                            <%grade += review.grade%>     
+                        <%end%>
+                    <%end%>
+
+                Відгуків:
+                    <%= amount%>
+                    <%if grade!=0 and amount!=0%>
+                            Оцінка:
+                            <%= grade/amount%>
+                    <%end%>
+
+
+
+
+
+
+            </p>
+
+        </article>
+
+
+
+
+
+    <% end %>
+
+<%else%>
+    <p>
+        Товари відсутні
+    </p>
+<%end%>
+</section>

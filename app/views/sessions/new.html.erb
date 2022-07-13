@@ -1,0 +1,35 @@
+<% provide :page_title, 'Log In' %>
+
+<h1>Авторизація</h1>
+
+<% flash.each do |type, msg| %>
+  <div>
+    <%= msg %>
+  </div>
+<% end %>
+
+<%= form_with url: sessions_path do |f| %>
+<div>
+        <div>
+            <%= f.label :Пошта %>
+        </div>
+
+        <div>
+            <%= f.email_field :email, placeholder: 'E-mail' %>
+        </div>
+    </div>
+
+    <div>
+        <div>
+            <%= f.label :Пароль %>
+        </div>
+
+        <div>
+            <%= f.password_field :password,placeholder: '********'%>
+        </div>
+    </div>
+
+    <%= f.submit "Увійти"%><br>
+
+    <a href="/users/new">Реєстрація</a>
+<% end %>

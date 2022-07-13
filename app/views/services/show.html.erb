@@ -1,0 +1,60 @@
+<section>
+<h1>Товари</h1>
+
+<%= render 'flash'%>
+
+
+<% if user_signed_in? %>
+<%= link_to "Додати товар",new_service_product_path(@service)%>
+<% else %>
+<p>Щоб додати товар потрібно авторизуватись</p>
+<% end %>
+
+</section>
+
+<section>
+    <% @service.products.each do |service| %>
+        <%if service.active?%>
+
+        <article>
+            <%= link_to service.short_description ,product_path(service)%>
+            Ціна:
+            <%=service.price%>
+            <p>
+            Продавець:
+                <%=@user.find(service.salesman).name%>
+
+                
+                
+
+
+                <%amount = 0%>
+                <%grade = 0%>
+                <% %>
+                <% @reviews.each do |review| %>
+                        <%if review.salesman == service.salesman%>
+
+                            <%amount+=1%>
+                            <%grade += review.grade%>     
+                        <%end%>
+                    <%end%>
+
+                Відгуків:
+                    <%= amount%>
+                    <%if grade!=0 and amount!=0%>
+                            Оцінка:
+                            <%= grade/amount%>
+                    <%end%>
+
+
+
+
+
+
+            </p>
+
+        </article>
+        <%end%>
+
+    <% end %>
+</section>

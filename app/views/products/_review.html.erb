@@ -1,0 +1,27 @@
+<section>
+    <h4>Відгуки:</h4>
+        <%if user_signed_in?%>
+                <%if current_user.id == @product.buyer%>
+                    <%if @product.active == false %>
+                        <%if not Review.find_by(salesman: @product.salesman, buyer: @product.buyer, product_id: @product.id).present?%>
+                            <%=link_to "Додати відгук", new_product_review_path(@product)%>
+                        <%end%>
+                    <%end%>
+                <%end%>
+                <% @reviews.each do |review| %>
+                    <%if review.salesman == @product.salesman%>
+                    <br><%=User.find(review.buyer).name%><br>
+                    <%=Game.find(Service.find(Product.find(review.product_id).service_id).game_id).name%> -
+                    <%=Service.find(Product.find(review.product_id).service_id).name%>:
+                    <%=Product.find(review.product_id).short_description%> -
+                    <%=Product.find(review.product_id).price%> грн
+            
+                        <article>
+                            <%=review.text%><br>
+                                Оцінка:
+                            <%=review.grade%>
+                        </article>
+                    <%end%>
+                <%end%>
+        <%end%>
+</section>

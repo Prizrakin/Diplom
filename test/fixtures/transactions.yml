@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  card: MyString
+  cvv: MyString
+  date: MyString
+  owner: MyString
+
+two:
+  card: MyString
+  cvv: MyString
+  date: MyString
+  owner: MyString

@@ -1,0 +1,18 @@
+<h1>Додати послугу</h1>
+
+<%= render 'flash'%>
+
+<%= form_with model: [@game, @service] do |f| %>
+<div>
+        <div>
+            <%= f.label :name, "Назва послуги" %>
+        </div>
+
+        <div>
+            <%= f.text_field :name %>
+        </div>
+    </div>
+
+    <%= f.submit "Додати"%><br>
+
+<% end %>

@@ -1,0 +1,39 @@
+<h1>Додати товар</h1>
+
+<%= render 'flash'%>
+
+<%= form_with model: [@service, @product] do |f| %>
+
+    <div>
+        <div>
+            <%= f.label :short_description, 'Короткий опис' %>
+        </div>
+
+        <div>
+            <%= f.text_field :short_description %>
+        </div>
+    </div>
+
+    <div>
+        <div>
+            <%= f.label :long_description, 'Повний опис' %>
+        </div>
+
+        <div>
+            <%= f.text_area :long_description %>
+        </div>
+    </div>
+
+    <div>
+        <div>
+            <%= f.label :price,'Ціна' %>
+        </div>
+
+        <div>
+            <%= f.text_field :price, placeholder: '000.00' %>
+        </div>
+    </div>
+
+    <%= f.submit "Зберегти"%>
+    
+<% end %>

@@ -1,0 +1,45 @@
+
+
+<%= form_with model: @user do |f| %>
+    <div>
+        <div>
+            <%= f.label :email, 'Пошта' %>
+        </div>
+
+        <div>
+            <%= f.email_field :email, placeholder: 'E-mail' %>
+        </div>
+    </div>
+
+    <div>
+        <div>
+            <%= f.label :name, 'Имя' %>
+        </div>
+
+        <div>
+            <%= f.text_field :name, placeholder: 'Name' %>
+        </div>
+    </div>
+
+    <div>
+        <div>
+            <%= f.label :password, 'Пароль' %>
+        </div>
+
+        <div>
+            <%= f.password_field :password, placeholder: '********' %>
+        </div>
+    </div>
+
+    <div>
+        <div>
+            <%= f.label :password_comfirmation,'Підтвердження паролю' %>
+        </div>
+
+        <div>
+            <%= f.password_field :password_comfirmation, placeholder: '********' %>
+        </div>
+    </div>
+
+    <%= f.submit "Зареєструватися"%>
+<% end %>
